@@ -28,10 +28,12 @@ block content
 						button.btn.btn-info(type='submit') Comentar
 			.row.clear
 			hr
-			.col-md-2.col-md-offset-1
-				img.img-circle(src='https://i.pinimg.com/originals/0c/bd/08/0cbd085828e2fe9074ac082ff201b4fc.jpg' height="50px" width="50px")
-			.col-md-8
-				h3 Nombre de usuario
-				|             Que buena noticia :)
+			each opinion, i in opinions	
+				.col-md-2.col-md-offset-1
+					img.img-circle(src='https://i.pinimg.com/originals/0c/bd/08/0cbd085828e2fe9074ac082ff201b4fc.jpg' height="50px" width="50px")
+				.col-md-8
+					h3 Juanito
+					|             #{opinion.opinion}
+		
 		br
-		br
+		

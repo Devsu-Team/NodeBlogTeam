@@ -5,6 +5,8 @@ const router = express.Router();
 let Article = require('../models/article');
 // User Model
 let User = require('../models/user');
+// Opinion Model
+let Opinion = require('../models/opinion');
 
 // Add Route
 router.get('/add', ensureAuthenticated, function(req, res){
@@ -105,13 +107,35 @@ router.delete('/:id', function(req, res){
 router.get('/:id', function(req, res){
   Article.findById(req.params.id, function(err, article){
     User.findById(article.author, function(err, user){
-      res.render('article', {
-        article:article,
-        author: user.name
-      });
+       Opinion.find({ article: article._id }, function(err, opinions){
+        if(err){
+          console.log(err);
+        } else {
+          res.render('article', {
+            article:article,
+            opinions:opinions,
+            author: user.name
+          });
+        }
+      }); 
     });
   });
 });
+
+// app.get('/', function(req, res){
+//   Opinion.find({}, function(err, opinions){
+//     if(err){
+//       console.log(err);
+//     } else {
+//       res.render('article', {
+//         article:article,
+//         opinion:opinion,
+//         author: user.name
+//       });
+//     }
+//   });
+// });
+
 
 // Access Control
 function ensureAuthenticated(req, res, next){
