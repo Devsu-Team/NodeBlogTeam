@@ -42,8 +42,10 @@ router.post('/addop', function(req, res){
       } else {
         console.log("Opinion añadida exitosamente");
         req.flash('success','Opinion añadida exitosamente');
+        res.redirect('/articles/'+opinion.article);
         // res.redirect('/opinions/'+req.article._id);
-        res.redirect('/index/');
+
+        // res.redirect('/');
       }
     });
   }
