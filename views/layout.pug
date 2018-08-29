@@ -31,21 +31,25 @@ html
                 a(href='/users/register') Registrar
               li
                 a(href='/users/login') Iniciar Sesion
-    .container
-      != messages('message', locals)
-      if errors
-        each error, i in errors
-          div(class="alert alert-danger") #{error.msg}
-      block content
-      br
-      hr
-      br
+    main.container
       
-      // /container
-  footer
-    nav.navbar.fixed-bottom(style="background-color:#666666;")    
-      div.collapse.navbar-collapse(id="navbarCollapse" ).
-        Devsu 2018 &nbsp; &nbsp; - &nbsp; &nbsp; Desarrollado por Johnny y Paul
+      
+      
+        != messages('message', locals)
+        if errors
+          each error, i in errors
+            div(class="alert alert-danger") #{error.msg}
+        block content
+    br
+    br
+    hr
+
+    footer(style="position: absolute; right: 0;  bottom: 0;  left: 0;  padding: 0rem;  text-align: center;")
+        nav.navbar.fixed-bottom.navbar-expand-sm.navbar-dark(style="background-color:#999999;")   
+          div.collapse.navbar-collapse(id="navbarCollapse" ).
+            Devsu © 2018 Copyright &nbsp; &nbsp; - &nbsp; &nbsp; Desarrollado por Johnny y Paul
+
+      
 script(src='/bower_components/jquery/dist/jquery.js')  
 script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
 script(src='/js/main.js')  
