@@ -1,8 +1,28 @@
 extends layout
 
 block content
-  h1 #{title}
-  ul.list-group
-    each article, i in articles
-      li.list-group-item
-        a(href="/articles/"+article._id)= article.title
+    
+
+    h1.display-3 GEEK BLOG
+        br
+        h5
+            i Lo mejor en el mundo de la tecnología
+    div(style="background-color:#D6D6D6")
+        each article, i in articles
+            br
+            div.container(style="background-color:#ffffff; margin-left: 2em; margin-right: 2em;width:95%;")
+                a(href="/articles/"+article._id)
+                    h2 #{article.title}
+                //- h2 #{entradas[1].post_title}
+                //- h6 #{entradas[1].post_date}
+                table
+                  tr
+                    td
+                      p.
+                        #{article.body}                  
+                    //- td
+                    //-     img(src= "https://easysmartech.com/wp-content/uploads/2018/07/Galacy-Watch-portada.jpg" height="100px" width="100px")
+                p
+                    a.btn.btn-primary(href="/articles/"+article._id, role='button') Ver más »
+        br    
+        
