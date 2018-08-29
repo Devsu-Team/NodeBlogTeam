@@ -11,7 +11,7 @@ module.exports = function(passport){
     User.findOne(query, function(err, user){
       if(err) throw err;
       if(!user){
-        return done(null, false, {message: 'No user found'});
+        return done(null, false, {message: 'Usuario no existente'});
       }
 
       // Match Password
@@ -20,7 +20,7 @@ module.exports = function(passport){
         if(isMatch){
           return done(null, user);
         } else {
-          return done(null, false, {message: 'Wrong password'});
+          return done(null, false, {message: 'Contraseña Incorrecta'});
         }
       });
     });

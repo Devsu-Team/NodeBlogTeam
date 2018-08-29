@@ -77,7 +77,7 @@ router.post('/login', function(req, res, next){
 // logout
 router.get('/logout', function(req, res){
   req.logout();
-  req.flash('success', 'You are logged out');
+  req.flash('success', 'Sesion cerrada');
   res.redirect('/users/login');
 });
 
