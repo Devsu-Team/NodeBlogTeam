@@ -1,11 +1,17 @@
 doctype html
-html
+html(lang='en')
   head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
     title GEEK BlOG 2.0
+   
+    //- link(rel='stylesheet', href='css/bootstrap.min.css')
+    
+    //- link(rel='stylesheet', href='css/jumbotron.css')
     link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
     link(rel='stylesheet' href='/css/style.css')
   body
-    nav.navbar.navbar-inverse.bg-dark(style="background-color: #220044;")
+    nav.navbar.navbar-inverse.bg-dark
       .container
         .navbar-header
           button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
@@ -22,7 +28,7 @@ html
           ul.nav.navbar-nav.navbar-right
             if user
               li
-                a(href='/articles/add') Crear Articulo
+                a.btn.btn-primary.btn-sm(href='/articles/add' style="background-color=#555555") Crear Articulo
             if user
               li 
                 a(href='/users/logout') Cerrar Sesion
@@ -42,14 +48,18 @@ html
         block content
     br
     br
+    br
+    br
+    br
+    br
+    br
+    br
     hr
 
-    footer(style="position: absolute; right: 0;  bottom: 0;  left: 0;  padding: 0rem;  text-align: center;")
+    footer
         nav.navbar.fixed-bottom.navbar-expand-sm.navbar-dark(style="background-color:#999999;")   
           div.collapse.navbar-collapse(id="navbarCollapse" ).
             Devsu © 2018 Copyright &nbsp; &nbsp; - &nbsp; &nbsp; Desarrollado por Johnny y Paul
 
       
-script(src='/bower_components/jquery/dist/jquery.js')  
-script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
-script(src='/js/main.js')  
+
