@@ -1,12 +1,37 @@
 extends layout
 
 block content
-  h1= article.title
-  h5 Autor: #{author}
-  p= article.body
-  hr
-  if user
-    if user.id ==article.author
-      a.btn.btn-default(href='/articles/edit/'+article._id) Editar 
-      a.btn.btn-danger.delete-article(href='#',data-id=article._id) Eliminar
-  
+	h1= article.title
+	h5 Autor: #{author}
+	p= article.body
+	hr
+	if user
+		if user.id ==article.author
+			a.btn.btn-default(href='/articles/edit/'+article._id) Editar 
+			a.btn.btn-danger.delete-article(href='#',data-id=article._id) Eliminar
+	br
+	brlink#bootstrap-css(href='//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css', rel='stylesheet')
+	script(src='//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js')
+	script(src='//code.jquery.com/jquery-1.11.1.min.js')
+	.col-md-10.clear
+	hr
+	h3 Escriba su Comentario
+	.col-md-10
+		.container-fluid.well.span8
+			.panel.panel-default
+				.panel-body
+					form(accept-charset='UTF-8', action='/opinions/addop', method='POST')
+						input(type="hidden" name="user" value=article._id)
+
+						textarea.form-control.counted(name='opinion', placeholder='Digite un mensaje', rows='5', style='margin-bottom:10px;')
+						h6#counter.pull-right 100 characters remaining
+						button.btn.btn-info(type='submit') Comentar
+			.row.clear
+			hr
+			.col-md-2.col-md-offset-1
+				img.img-circle(src='https://i.pinimg.com/originals/0c/bd/08/0cbd085828e2fe9074ac082ff201b4fc.jpg' height="50px" width="50px")
+			.col-md-8
+				h3 Nombre de usuario
+				|             Que buena noticia :)
+		br
+		br

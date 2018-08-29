@@ -31,7 +31,7 @@ router.post('/addop', function(req, res){
     console.log("paso el if ")
     let opinion = new Opinion();
     // opinion.article = req.article._id;
-    opinion.article = "5b86409ad6ed4529d0d83c3a";
+    opinion.article = req.body.user;
     opinion.opinion = req.body.opinion;
 
     opinion.save(function(err){
@@ -40,7 +40,9 @@ router.post('/addop', function(req, res){
         console.log(err);
         return;
       } else {
+
         console.log("Opinion añadida exitosamente");
+        console.log(opinion.article);
         req.flash('success','Opinion añadida exitosamente');
         res.redirect('/articles/'+opinion.article);
         // res.redirect('/opinions/'+req.article._id);
