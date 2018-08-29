@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1 Tu opinión importa, Escribe tu comentario
+  form(method='POST', action='/articles/addop')
+    #form-group
+      label Comentario:
+      textarea.form-control(name='opinion')
+    br
+    input.btn.btn-primary(type='submit',value='Comentar')

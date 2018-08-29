@@ -103,6 +103,13 @@ let users = require('./routes/users');
 app.use('/articles', articles);
 app.use('/users', users);
 
+
+// ***********************************************
+// app.use('/addop', './views/add_opinion');
+
+
+
+
 // Start Server
 app.listen(3000, function(){
   console.log('Server started on port 3000...');
