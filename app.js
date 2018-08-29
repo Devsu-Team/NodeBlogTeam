@@ -27,6 +27,11 @@ const app = express();
 // Bring in Models
 let Article = require('./models/article');
 
+// *************************************************
+let Opinion = require('./models/opinion');
+
+
+
 // Load View Engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -100,13 +105,25 @@ app.get('/', function(req, res){
 // Route Files
 let articles = require('./routes/articles');
 let users = require('./routes/users');
+let opinions = require('./routes/opinions');
 app.use('/articles', articles);
 app.use('/users', users);
 
 
 // ***********************************************
-// app.use('/addop', './views/add_opinion');
-
+ app.use('/opinions', opinions);
+// Home Route
+app.get('/opinion', function(req, res){
+  Opinion.find({}, function(err, articles){
+    if(err){
+      console.log(err);
+    } else {
+      res.render('index', {
+        title:'Articulos',
+      });
+    }
+  });
+});
 
 
 

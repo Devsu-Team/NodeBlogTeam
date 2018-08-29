@@ -22,22 +22,28 @@ router.post('/addop', function(req, res){
   let errors = req.validationErrors();
 
   if(errors){
+    console.log("error en el iff")
     res.render('add_opinion', {
       title:'Añadir Opinion',
       errors:errors
     });
   } else {
+    console.log("paso el if ")
     let opinion = new Opinion();
-    opinion.article = req.article._id;
+    // opinion.article = req.article._id;
+    opinion.article = "5b86409ad6ed4529d0d83c3a";
     opinion.opinion = req.body.opinion;
 
     opinion.save(function(err){
       if(err){
+        console.log("error en el iff x2")
         console.log(err);
         return;
       } else {
+        console.log("Opinion añadida exitosamente");
         req.flash('success','Opinion añadida exitosamente');
-        res.redirect('/articles/'+req.article._id);
+        // res.redirect('/opinions/'+req.article._id);
+        res.redirect('/index/');
       }
     });
   }
