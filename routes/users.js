@@ -19,12 +19,12 @@ router.post('/register', function(req, res){
   const password = req.body.password;
   const password2 = req.body.password2;
 
-  req.checkBody('name', 'Name is required').notEmpty();
-  req.checkBody('email', 'Email is required').notEmpty();
-  req.checkBody('email', 'Email is not valid').isEmail();
-  req.checkBody('username', 'Username is required').notEmpty();
-  req.checkBody('password', 'Password is required').notEmpty();
-  req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
+  req.checkBody('name', 'Nombre es un campo obligatorio').notEmpty();
+  req.checkBody('email', 'Email es un campo obligatorio').notEmpty();
+  req.checkBody('email', 'Email no valido').isEmail();
+  req.checkBody('username', 'Usuario es un campo obligatorio').notEmpty();
+  req.checkBody('password', 'Contraseña es un campo obligatorio').notEmpty();
+  req.checkBody('password2', 'La contraseña no concuerda').equals(req.body.password);
 
   let errors = req.validationErrors();
 
@@ -51,7 +51,7 @@ router.post('/register', function(req, res){
             console.log(err);
             return;
           } else {
-            req.flash('success','You are now registered and can log in');
+            req.flash('success','Su cuenta ha sido creada exitosamente, ahora puede ingresar con su usuario y contraseña');
             res.redirect('/users/login');
           }
         });

@@ -9,22 +9,22 @@ let User = require('../models/user');
 // Add Route
 router.get('/add', ensureAuthenticated, function(req, res){
   res.render('add_article', {
-    title:'Add Article'
+    title:'Añadir Articulo'
   });
 });
 
 // Add Submit POST Route
 router.post('/add', function(req, res){
-  req.checkBody('title','Title is required').notEmpty();
+  req.checkBody('title','Titulo es un campo obligatorio').notEmpty();
   //req.checkBody('author','Author is required').notEmpty();
-  req.checkBody('body','Body is required').notEmpty();
+  req.checkBody('body','Mensaje es un campo obligatorio').notEmpty();
 
   // Get Errors
   let errors = req.validationErrors();
 
   if(errors){
     res.render('add_article', {
-      title:'Add Article',
+      title:'Añadir Articulo',
       errors:errors
     });
   } else {
@@ -38,7 +38,7 @@ router.post('/add', function(req, res){
         console.log(err);
         return;
       } else {
-        req.flash('success','Article Added');
+        req.flash('success','Articulo añadido exitosamente');
         res.redirect('/');
       }
     });
@@ -49,11 +49,11 @@ router.post('/add', function(req, res){
 router.get('/edit/:id', ensureAuthenticated, function(req, res){
   Article.findById(req.params.id, function(err, article){
     if(article.author != req.user._id){
-      req.flash('danger', 'Not Authorized');
+      req.flash('danger', 'No esta autorizado');
       res.redirect('/');
     }
     res.render('edit_article', {
-      title:'Edit Article',
+      title:'Editar Articulo',
       article:article
     });
   });
@@ -73,7 +73,7 @@ router.post('/edit/:id', function(req, res){
       console.log(err);
       return;
     } else {
-      req.flash('success', 'Article Updated');
+      req.flash('success', 'Los cambios se han guardado exitosamente');
       res.redirect('/');
     }
   });
@@ -118,7 +118,7 @@ function ensureAuthenticated(req, res, next){
   if(req.isAuthenticated()){
     return next();
   } else {
-    req.flash('danger', 'Please login');
+    req.flash('danger', 'Necesita acceder a su cuenta');
     res.redirect('/users/login');
   }
 }
