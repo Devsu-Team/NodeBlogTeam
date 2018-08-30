@@ -2,21 +2,51 @@ extends layout
 
 block content
   h1 Registrar
-  form(method='POST', action='/users/register')
-    #form-group
-      label Nombre:
-      input.form-control(name='name', type='text')
-    #form-group
-      label Email:
-      input.form-control(name='email', type='text')
-    #form-group
-      label Usuario:
-      input.form-control(name='username',type='text')
-    #form-group
-      label Contraseña:
-      input.form-control(name='password',type='password')
-    #form-group
-      label Confirmar Contraseña:
-      input.form-control(name='password2',type='password')
-    br
-    input.btn.btn-primary(type='submit',value='Crear Cuenta')
+  .container
+  .row
+    .col-md-12
+        br
+        form.form-horizontal(method='POST', action='/users/register')
+          fieldset
+            .form-group
+              span.col-md-1.text-center
+                a
+                  span.glyphicon.glyphicon-user
+              .col-md-9
+                input#fname.form-control(name='name', type='text',placeholder='*Nombre')
+            .form-group
+              span.col-md-1.text-center
+                
+              .col-md-9
+                input.form-control(name='username',type='text',placeholder='*Usuario')
+            .form-group
+              span.col-md-1.text-center
+                a
+                  span.glyphicon.glyphicon-envelope
+              .col-md-9
+                input#email.form-control(name='email', type='text',placeholder='*Email')
+            .form-group
+              span.col-md-1.text-center
+                a
+                  span.glyphicon.glyphicon-lock
+              .col-md-9
+                input.form-control(name='password',type='password',placeholder='*Contraseña')
+            .form-group
+              span.col-md-1.text-center
+                
+              .col-md-9
+                input.form-control(name='password2',type='password',placeholder='*Vuelva a Escribir su Contraseña')
+            .form-group
+              span.col-md-1.text-center
+                a
+                  span.glyphicon.glyphicon-phone-alt
+              .col-md-9
+                input#phone.form-control(name='phone', type='text', placeholder=' Telefono')
+            .form-group
+              span.col-md-1.text-center
+                a
+                  span.glyphicon.glyphicon-pencil
+              .col-md-9
+                textarea#message.form-control(name='message', placeholder='Escribe algo sobre ti', rows='7')
+            br
+            input.btn.btn-primary(type='submit',value='Crear Cuenta')

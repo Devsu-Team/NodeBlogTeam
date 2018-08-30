@@ -19,7 +19,7 @@ html(lang='en')
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand(href='/') GEEK BlOG 2.0
+          a.navbar-brand(href='/' style="color:#ffffff") GEEK BlOG 2.0
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
             li
@@ -28,10 +28,13 @@ html(lang='en')
           ul.nav.navbar-nav.navbar-right
             if user
               li
-                a.btn.btn-primary.btn-sm(href='/articles/add' style="background-color=#555555") Crear Articulo
+                a.btn.btn-primary(href='/articles/add' style="background-color=#555555") 
+                  span.glyphicon.glyphicon-pencil(style="color:#ffffff")  Crear
+
             if user
               li 
-                a(href='/users/logout') Cerrar Sesion
+                a(href='/users/logout')
+                  span.glyphicon.glyphicon-log-out  Salir
             else
               li
                 a(href='/users/register') Registrar
@@ -52,12 +55,9 @@ html(lang='en')
     br
     br
     br
-    br
-    br
-    hr
   script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js")
   script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js")
-  footer
+  footer.page-footer.mdb-color.lighten-3.pt-4
         nav.navbar.fixed-bottom.navbar-expand-sm.navbar-dark(style="background-color:#999999;")   
           div.collapse.navbar-collapse(id="navbarCollapse" ).
             Devsu © 2018 Copyright &nbsp; &nbsp; - &nbsp; &nbsp; Desarrollado por Johnny y Paul
