@@ -7,7 +7,9 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 const config = require('./config/database');
-const upload = require('./routes/upload.js')
+let multipart = require('connect-multiparty');
+let multipartMiddleware = multipart();
+
 
 mongoose.connect(config.database);
 let db = mongoose.connection;
@@ -60,6 +62,13 @@ app.use(function (req, res, next) {
   next();
 });
 
+// Express images Middleware         implementar middleware
+//app.use(require('connect-multiparty')());
+//app.use(function (req, res, next) {
+//res.locals.messages = require('express-messages')(req, res);
+  //next();
+//});
+
 // Express Validator Middleware
 app.use(expressValidator({
   errorFormatter: function(param, msg, value) {
@@ -107,8 +116,10 @@ app.get('/', function(req, res){
 let articles = require('./routes/articles');
 let users = require('./routes/users');
 let opinions = require('./routes/opinions');
+let upload = require('./routes/upload.js')
 app.use('/articles', articles);
 app.use('/users', users);
+
 
 
 // ***********************************************
@@ -127,9 +138,11 @@ app.get('/opinion', function(req, res){
 });
 
 // indicamos que del fichero upload.js haga mención a la función upload, para cargar el formulario html
-app.get('/add_article',upload.upload); 
+app.get('/add_article',upload.Uploads); 
 // indicamos que del fichero upload.js haga mención a la función Uploads para subir la imagen.
-app.post('/add_article', upload.Uploads);
+//app.post('/add_article', upload.Uploads);
+
+app.post('/add_article', multipartMiddleware, upload.Uploads);
 
 // Start Server
 app.listen(3000, function(){
