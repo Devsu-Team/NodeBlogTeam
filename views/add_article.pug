@@ -2,27 +2,26 @@ extends layout
 
 block content
   h1 #{title}
-  form(method='POST', action='/articles/add')
-    #form-group
-      label Titulo:
-      input.form-control(name='title', type='text')
-    #form-group
-      label Mensaje:
-      textarea.form-control(name='body')
-    #form-group
-      label Imagen:
-      li 
-        a(href="/upload") Subida de imagen
-      
-        
-    br
-    input.btn.btn-primary(type='submit',value='Subir')
-    
-  form.register(action='/upload', method='post', enctype='multipart/form-data')
-        if locals.message
-           img(src='#{message}', alt='')
-        br
-        |Selecciona la imagen
-        input(type="file", name='photo')
-        br
-        input(type='submit', value='Guardar')
+  .row
+    .col-sm-8
+      div
+        form(method='POST', action='/articles/add')
+          #form-group
+            label Titulo:
+            input.form-control(name='title', type='text')
+          #form-group
+            label Mensaje:
+            textarea.form-control(name='body', style="height:250px")
+          
+          br
+          input.btn.btn-primary(type='submit',value='Subir')
+    .col-sm-4
+      div
+        form.register(action='/upload', method='post', enctype='multipart/form-data')
+              if locals.message
+                 img(src='#{message}', alt='')
+              br
+              |Selecciona la imagen
+              input(type="file", name='photo')
+              br
+              input(type='submit', value='Guardar')
