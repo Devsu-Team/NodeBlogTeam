@@ -17,7 +17,7 @@ block content
           input.btn.btn-primary(type='submit',value='Subir')
     .col-sm-4
       div
-        form.register(action='/upload', method='post', enctype='multipart/form-data')
+        form.register(action='/add_article', method='post', enctype='multipart/form-data')
               if locals.message
                  img(src='#{message}', alt='')
               br

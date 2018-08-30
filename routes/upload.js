@@ -1,5 +1,5 @@
 exports.upload = function(req, res){
-    res.render('upload',{ title: 'ejemplo de subida de imagen por HispaBigData' });
+    res.render('upload',{ title: 'subir_imagen' });
   };
 
 
@@ -11,7 +11,7 @@ exports.Uploads = function(req, res) {
     var tmp_path = req.files.photo.path;
     // Ruta donde colocaremos las imagenes
     //var target_path = 'C:\Users\chivi\Documents\github\NodeBlogTeam\images' + req.files.photo.name;
-    var target_path = 'C:\Users\chivi\Documents\github\NodeBlogTeam\images' + req.files.photo.name;
+    var target_path = 'C:/Users/chivi/Documents/github/NodeBlogTeam/images' + req.files.photo.name;
    // Comprobamos que el fichero es de tipo imagen
     if (req.files.photo.type.indexOf('image')==-1){
                 res.send('El fichero que deseas subir no es una imagen');
@@ -24,7 +24,7 @@ exports.Uploads = function(req, res) {
             // Eliminamos el fichero temporal
             fs.unlink(tmp_path, function() {
                 if (err) throw err;
-                res.render('upload',{message: '/images/' + req.files.photo.name,title: 'ejemplo de subida de imagen por HispaBigData'});
+                res.render('add_article',{message: '/images/' + req.files.photo.name,title: 'subir_imagen'});
             });
          });
      }
