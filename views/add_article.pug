@@ -13,14 +13,16 @@ block content
       label Imagen:
       li 
         a(href="/upload") Subida de imagen
-      block content
-      form.register(action='/upload', method='post', enctype='multipart/form-data')
-      if locals.message
-         img(src='#{message}', alt='')
-      br
-      |Selecciona la imagen
-      input(type="file", name='photo')
-      br
-      input(type='submit', value='Guardar')
+      
+        
     br
     input.btn.btn-primary(type='submit',value='Subir')
+    
+  form.register(action='/upload', method='post', enctype='multipart/form-data')
+        if locals.message
+           img(src='#{message}', alt='')
+        br
+        |Selecciona la imagen
+        input(type="file", name='photo')
+        br
+        input(type='submit', value='Guardar')
