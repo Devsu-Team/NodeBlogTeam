@@ -2,7 +2,7 @@ extends layout
 
 block content
 	h1= article.title
-	h5 Autor: #{author}
+	h5 Autor: #{author} 
 	p= article.body
 	hr
 	if user
@@ -21,7 +21,11 @@ block content
 			.panel.panel-default
 				.panel-body
 					form(accept-charset='UTF-8', action='/opinions/addop', method='POST')
-						input(type="hidden" name="user" value=article._id)
+						input(type="hidden" name="article" value=article._id)
+						if user
+							input(type="hidden" name="owneropinion" value=user.name)
+						else
+							input(type="hidden" name="owneropinion" value="Anónimo")
 
 						textarea.form-control.counted(name='opinion', placeholder='Digite un mensaje', rows='5', style='margin-bottom:10px;')
 						h6#counter.pull-right 100 characters remaining
@@ -33,7 +37,7 @@ block content
 				.col-md-2.col-md-offset-1
 					img.img-circle(src='https://i.pinimg.com/originals/0c/bd/08/0cbd085828e2fe9074ac082ff201b4fc.jpg' height="50px" width="50px")
 				.col-md-8
-					h3 User
+					h3 #{opinion.owner}
 
 					|             #{opinion.opinion}
 				br
