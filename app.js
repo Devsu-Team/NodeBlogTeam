@@ -7,6 +7,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 const config = require('./config/database');
+const upload = require('./routes/upload.js')
 
 mongoose.connect(config.database);
 let db = mongoose.connection;
@@ -125,7 +126,10 @@ app.get('/opinion', function(req, res){
   });
 });
 
-
+// indicamos que del fichero upload.js haga mención a la función upload, para cargar el formulario html
+app.get('/add_article',upload.upload); 
+// indicamos que del fichero upload.js haga mención a la función Uploads para subir la imagen.
+app.post('/add_article', upload.Uploads);
 
 // Start Server
 app.listen(3000, function(){
